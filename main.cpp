@@ -1,4 +1,4 @@
-﻿#include "ЛабаЯП1.h"
+﻿#include "main.h"
 
 using namespace std;
 using namespace Laba;

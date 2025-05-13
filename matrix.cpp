@@ -1,4 +1,4 @@
-#include "ЛабаЯП1.h"
+#include "main.h"
 #include "matrix.h"
 using namespace std;
 
@@ -7,21 +7,21 @@ namespace Laba {
 	int rows, cols;
 	double* numbers;
 	
-	//Конструктор с дабл значением
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix::Matrix(double value) {
 		cols = 1;
 		rows = 1;
 		numbers = new double[1] { value };
 	}
 
-	//Конструктор с нулями
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix::Matrix(int n, int m) {
 		cols = m;
 		rows = n;
 		numbers = new double[cols * rows] {0};
 	}
 
-	//Конструктор копирующий с базы данных
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix::Matrix(int n, int m, double* data) {
 		cols = m;
 		rows = n;
@@ -31,7 +31,7 @@ namespace Laba {
 		}
 	}
 
-	//Конструктор копирующий
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix::Matrix(const Matrix& other) {
 		this->cols = other.cols;
 		this->rows = other.rows;
@@ -42,12 +42,12 @@ namespace Laba {
 		}
 	}
 
-	//Деструктор
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix::~Matrix() {
 		delete[] numbers;
 	}
 
-	//Опрератор []
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ []
 	double& Matrix::operator [](int n) {
 		if (n <= cols * rows && n >= 0) {
 			return numbers[n];
@@ -57,7 +57,7 @@ namespace Laba {
 		}
 	}
 
-	//Оператор ()
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ()
 	double& Matrix::operator ()(int i, int j) {
 		if (i < rows && i >= 0) {
 			if (j < cols && j >= 0) {
@@ -72,7 +72,7 @@ namespace Laba {
 		}
 	}
 	
-	//Функция Вывода
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void Matrix::PrintM()
 	{
 		if (format_spec.empty()) {
@@ -93,17 +93,17 @@ namespace Laba {
 		}
 	}
 
-	//Функция для изменения формата
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	void Matrix::SetFormat(string format)
 	{
 		format_spec = format;
 	}
 
-	//Оператор =
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ =
 	Matrix& Matrix::operator=(const Matrix& other)
 	{
 		if (this == &other) {
-			return *this;  // Самоприсваивание
+			return *this;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 
 
@@ -118,10 +118,10 @@ namespace Laba {
 		return *this;
 	}
 	
-	//Оператор +
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ +
 	Matrix Matrix::operator+(const Matrix& b) {
 		Matrix c(rows, cols);
-		if (cols != b.cols || rows != b.rows) { cout << "Несовпадают размеры"; exit(1); }
+		if (cols != b.cols || rows != b.rows) { cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"; exit(1); }
 		else {
 			for (int i = 0; i < cols * rows; i++) {
 				c[i] = numbers[i] + b.numbers[i];
@@ -130,11 +130,11 @@ namespace Laba {
 		return c;
 	}
 
-	//Опретор * на объект
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ * пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix Matrix::operator* (const Matrix& b)
 	{
 		Matrix c(rows, b.cols);
-		if (cols != b.rows) { cout << "Не подходящие размеры"; exit(1); }
+		if (cols != b.rows) { cout << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"; exit(1); }
 		
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < b.cols; j++) {
@@ -146,11 +146,11 @@ namespace Laba {
 		return c;
 	}
 
-	//Опреатор -
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -
 	Matrix Matrix::operator-(const Matrix& b) {
 		Matrix c(rows, cols);
 		if (cols != b.cols || rows != b.rows) {
-			cout << "Несовпадают размеры";
+			cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 		}
 		for (int i = 0; i < cols * rows; i++) {
 			c[i] = numbers[i] - b.numbers[i];
@@ -158,7 +158,7 @@ namespace Laba {
 		return c;
 	}
 
-	//Оператор <<
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <<
 	std::ostream& operator<<(std::ostream& os, const Matrix& c)
 	{
 		if (format_spec.empty()) {
@@ -180,7 +180,7 @@ namespace Laba {
 		return os;
 	}
 	
-	//Оператор: Число умножаем на матрицу
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Matrix operator*(double a, const Laba::Matrix & b)
 	{
 		Laba::Matrix c(b);
@@ -190,7 +190,7 @@ namespace Laba {
 		return c;
 	}
 	
-	//Оператор: Матрицу умножаем на число
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Matrix Matrix::operator*(const double& a) {
 		Matrix c(rows, cols);
 		for (int i = 0; i < rows*cols; i++) {
@@ -199,7 +199,7 @@ namespace Laba {
 		return c;
 	}
 	
-	// Унарный минус
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Matrix Matrix::operator - () const {
 		for (int i = 0; i < this->cols * this->rows; i++) {
 			this->numbers[i] = -this->numbers[i];
@@ -207,7 +207,7 @@ namespace Laba {
 		return *this;
 	}
 
-	// Оператор +=
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ +=
 	Matrix Matrix::operator+= (const double& a) {
 		for (int i = 0; i < this->cols * this->rows; i++) {
 			this->numbers[i] += a;
@@ -215,11 +215,11 @@ namespace Laba {
 		return *this;
 	}
 
-	// Индивидуальное задание 1
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1
 	Matrix Matrix::operator||(Matrix a)
 	{
 		Matrix c(a.cols, this->cols);
-		if (a.rows != 1) { cout << "Не праильный ввод"; exit(1); }
+		if (a.rows != 1) { cout << "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ"; exit(1); }
 		else {
 			for (int i = 0; i < a.cols; i++) {
 				int kakuyu_stroku_bratb = a.numbers[i];
@@ -231,7 +231,7 @@ namespace Laba {
 		return c;
 	}
 
-	// Нахождение максимального значения
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	double Matrix::FindMax()
 	{
 		double max = -9999999999999999999;
@@ -243,7 +243,7 @@ namespace Laba {
 		return max;
 	}
 
-	// Оператор -=
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -=
 	Matrix Matrix::operator-= (const double& a) {
 		for (int i = 0; i < this->cols * this->rows; i++) {
 			this->numbers[i] -= a;
@@ -251,7 +251,7 @@ namespace Laba {
 		return *this;
 	}
 	
-	// Оператор ==
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ==
 	bool Matrix::operator==(const Matrix& a) const 
 	{
 		bool flg = true;
